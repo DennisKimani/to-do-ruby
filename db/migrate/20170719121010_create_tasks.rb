@@ -4,7 +4,7 @@ class CreateTasks < ActiveRecord::Migration[5.1]
       t.column(:description, :string)
       t.column(:done, :boolean)
 
-      t.timestamps
+      t.timestamps()
     end
   end
 end
