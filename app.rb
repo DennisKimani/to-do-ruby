@@ -27,7 +27,8 @@ patch('/tasks/:id') do
   erb(:index)
 end
 
-post ('/tasks')
+
+post ('/tasks') do
     @new_task = Task.new(params.fetch("description"))
     if @new_task.save()
       redirect("/tasks/".concat(@new_task.id().to_s()))
@@ -40,3 +41,12 @@ post ('/tasks')
     @task = Task.find(params.fetch("id").to_i())
     erb(:task)
   end
+
+  # delete('/tasks/:id') do
+  #   @task = Task.find(params.fetch("id").to_i()
+  #   if @task.destroy()
+  #     redirect("/tasks")
+  #   else
+  #     erb(:task)
+  #   end
+  # end
