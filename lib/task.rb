@@ -4,4 +4,5 @@ class Task < ActiveRecord::Base
     where(done: false)
   end)
   validates(:description, :presence => true)
+  validates(:description, {:presence => true, :length => { :maximum => 50 }})
   end
