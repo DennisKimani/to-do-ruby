@@ -27,12 +27,16 @@ patch('/tasks/:id') do
   erb(:index)
 end
 
-post('/tasks') do
-  description = params.fetch("description")
-  @task = Task.new({:description => description, :done => false})
-  if @task.save()
-    erb(:success)
-  else
-    erb(:errors)
+post ('/tasks')
+    @new_task = Task.new(params.fetch("description"))
+    if @new_task.save()
+      redirect("/tasks/".concat(@new_task.id().to_s()))
+    else
+      erb(:index)
+    end
   end
-end
+
+  get('/tasks/:id') do
+    @task = Task.find(params.fetch("id").to_i())
+    erb(:task)
+  end
