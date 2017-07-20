@@ -18,10 +18,10 @@ describe(Task) do
       task = Task.new({:description => "a".*(51)})
       expect(task.save()).to(eq(false))
     end
-    # it("converts the name to lowercase") do
-    #   task = Task.create({:description => "FINAGLE THE BUFFALO"})
-    #   expect(task.description()).to(eq("finagle the buffalo"))
-
+    it("converts the name to lowercase") do
+      task = Task.create({:description => "FINAGLE THE BUFFALO"})
+      expect(task.description()).to(eq("finagle the buffalo"))
+    end
 
   describe('#list') do
     it('tells which list it belongs to') do
